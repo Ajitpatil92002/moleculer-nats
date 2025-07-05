@@ -14,10 +14,10 @@ async function ensureStreamExists({ servers, user, pass }) {
 
     const subjects = [
         'moleculer.>',
-        'dev.>',
+        // 'dev.>',
         'MOL-dev.>',
-        'internal.>',
-        'deliveries.>',
+        // 'internal.>',
+        // 'deliveries.>',
     ];
 
     try {
@@ -86,10 +86,10 @@ function NATSMiddleware(transporterOptions = {}) {
                         name: 'MOLECULER_STREAM',
                         subjects: [
                             'moleculer.>',
-                            'dev.>',
+                            // 'dev.>',
                             'MOL-dev.>',
-                            'internal.>',
-                            'deliveries.>',
+                            // 'internal.>',
+                            // 'deliveries.>',
                         ],
                         storage: 'file',
                     },

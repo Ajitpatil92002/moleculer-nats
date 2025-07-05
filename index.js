@@ -5,10 +5,11 @@ const broker = new ServiceBroker({
     middlewares: [
         NATSMiddleware({
             user: 'moleculer',
-            pass: '123455alknfklj',
+            pass: '35280155-5d3e-4d85-bcad-6a7945002383',
         }),
     ],
     nodeID: 'node-' + process.pid,
+    namespace: 'dev',
     logger: {
         type: 'Console',
         options: {
