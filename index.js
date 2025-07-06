@@ -5,10 +5,11 @@ const broker = new ServiceBroker({
     middlewares: [
         NATSMiddleware({
             user: 'moleculer',
-            pass: '123455alknfklj',
+            pass: '35280155-5d3e-4d85-bcad-6a7945002383',
         }),
     ],
     nodeID: 'node-' + process.pid,
+    // namespace: 'dev', // Removed to avoid cycle error
     logger: {
         type: 'Console',
         options: {
@@ -25,9 +26,9 @@ async function start() {
         await broker.start();
         setTimeout(async () => {
             try {
-                await broker.call('sender.sendMessage');
+                await broker.call('sender.sendMultiple');
             } catch (err) {
-                console.error('Failed to send message:', err);
+                console.error('Failed to send messages:', err);
             }
         }, 2000);
     } catch (err) {
