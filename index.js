@@ -9,7 +9,7 @@ const broker = new ServiceBroker({
         }),
     ],
     nodeID: 'node-' + process.pid,
-    // namespace: 'dev', // Removed to avoid cycle error
+    namespace: 'dev',
     logger: {
         type: 'Console',
         options: {

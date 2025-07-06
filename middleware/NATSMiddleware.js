@@ -14,9 +14,9 @@ async function ensureStreamExists({ servers, user, pass }) {
 
     const subjects = [
         'moleculer.>',
-        'dev.>',
         'MOL-dev.>',
-        'v1.>', // Added for clean channel names like v1.ldap.sync.start.event
+        'v1.>',
+        'dev.v1.>',
         'deliveries.>',
     ];
 
@@ -86,9 +86,9 @@ function NATSMiddleware(transporterOptions = {}) {
                         name: 'MOLECULER_STREAM',
                         subjects: [
                             'moleculer.>',
-                            'dev.>',
                             'MOL-dev.>',
                             'v1.>',
+                            'dev.v1.>',
                             'deliveries.>',
                         ],
                         storage: 'file',

@@ -38,7 +38,7 @@ module.exports = {
         sendMultiple: {
             async handler(ctx) {
                 try {
-                    for (let i = 0; i < 3; i++) {
+                    for (let i = 0; i < 10; i++) {
                         await ctx.broker.sendToChannel(
                             'v1.test.scan.start.channel.event',
                             { msg: `Test channel message ${i + 1}` },
