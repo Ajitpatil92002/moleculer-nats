@@ -1,16 +1,31 @@
+const { connect } = require('nats');
+
 module.exports = {
     name: 'receiver',
     channels: {
-        'internal.v1.test.scan.start.channel.event': {
-            async handler(payload) {
-                try {
-                    this.logger.info('✅ Received message:', payload);
-                    // Assuming ctx.ack() is replaced by some acknowledgment logic
-                    this.logger.info('✅ Message acknowledged successfully');
-                } catch (err) {
-                    this.logger.error('❌ Failed to acknowledge message:', err);
-                    // Optionally handle the error or retry logic here
-                }
+        'v1.test.scan.start.channel.event': {
+            group: 'receiver',
+            context: true,
+            async handler(ctx) {
+                this.logger.info(
+                    '✅ Received test channel message:',
+                    ctx.params
+                );
+                this.logger.debug(
+                    'Context object:',
+                    JSON.stringify(ctx, null, 2)
+                );
+            },
+        },
+        'v1.ldap.sync.start.event': {
+            group: 'v1.ldap',
+            context: true,
+            async handler(ctx) {
+                this.logger.info('✅ Received LDAP sync message:', ctx.params);
+                this.logger.debug(
+                    'Context object:',
+                    JSON.stringify(ctx, null, 2)
+                );
             },
         },
     },

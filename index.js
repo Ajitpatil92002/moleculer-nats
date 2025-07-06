@@ -26,9 +26,9 @@ async function start() {
         await broker.start();
         setTimeout(async () => {
             try {
-                await broker.call('sender.sendMessage');
+                await broker.call('sender.sendMultiple');
             } catch (err) {
-                console.error('Failed to send message:', err);
+                console.error('Failed to send messages:', err);
             }
         }, 2000);
     } catch (err) {

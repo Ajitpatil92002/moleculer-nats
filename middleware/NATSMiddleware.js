@@ -14,10 +14,10 @@ async function ensureStreamExists({ servers, user, pass }) {
 
     const subjects = [
         'moleculer.>',
-        // 'dev.>',
         'MOL-dev.>',
-        // 'internal.>',
-        // 'deliveries.>',
+        'v1.>',
+        'dev.v1.>',
+        'deliveries.>',
     ];
 
     try {
@@ -61,7 +61,7 @@ async function ensureStreamExists({ servers, user, pass }) {
 function NATSMiddleware(transporterOptions = {}) {
     const {
         user = 'moleculer',
-        pass = '123455alknfklj',
+        pass = '35280155-5d3e-4d85-bcad-6a7945002383',
         servers = ['nats://localhost:4222'],
     } = transporterOptions;
 
@@ -86,10 +86,10 @@ function NATSMiddleware(transporterOptions = {}) {
                         name: 'MOLECULER_STREAM',
                         subjects: [
                             'moleculer.>',
-                            // 'dev.>',
                             'MOL-dev.>',
-                            // 'internal.>',
-                            // 'deliveries.>',
+                            'v1.>',
+                            'dev.v1.>',
+                            'deliveries.>',
                         ],
                         storage: 'file',
                     },
@@ -99,11 +99,11 @@ function NATSMiddleware(transporterOptions = {}) {
                         ack_policy: 'explicit',
                         deliver_policy: 'new',
                         ack_wait: 30 * 1000,
-                        max_ack_pending: 1, // Ensure consistency
-                        max_deliver: 5, // Allow more retries for debugging
+                        max_ack_pending: 1,
+                        max_deliver: 5,
                     },
                 },
-                maxInFlight: 1, // Align with max_ack_pending
+                maxInFlight: 1,
                 maxRetries: 3,
             },
         },
